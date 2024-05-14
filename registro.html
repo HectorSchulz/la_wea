@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Agency T&J</title>
+    <link href="assets/img2/icon.png" rel="icon">
+    <link rel="stylesheet" href="styleL.css">
+</head>
+<body>
+    <div class="formulario">
+        <h1>Registro de Usuario</h1>
+        <form id="loginForm" method="post">
+            <div class="username">
+                <input id="usernameInput" type="text" required>
+                <label id="usernameLabel">Nombre de usuario</label>
+            </div>
+            <div class="username">
+                <input id="emailInput" type="text" required>
+                <label id="emailLabel">Correo electrónico</label>
+            </div>
+            <div class="contrasena">
+                <input id="passwordInput" type="password" required>
+                <label id="passwordLabel">Contraseña</label>
+            </div>
+            <input type="submit" value="Registrarse">
+        </form>
+    </div>
+
+    <script>
+        
+        const loginForm = document.getElementById("loginForm");
+        const usernameInput = document.getElementById("usernameInput");
+        const usernameLabel = document.getElementById("usernameLabel");
+        const emailInput = document.getElementById("emailInput");
+        const emailLabel = document.getElementById("emailLabel");
+        const passwordInput = document.getElementById("passwordInput");
+        const passwordLabel = document.getElementById("passwordLabel");
+
+        usernameInput.addEventListener("input", function() {
+            toggleLabel(usernameLabel, usernameInput);
+        });
+
+        emailInput.addEventListener("input", function() {
+            toggleLabel(emailLabel, emailInput);
+        });
+
+        passwordInput.addEventListener("input", function() {
+            toggleLabel(passwordLabel, passwordInput);
+        });
+
+        function toggleLabel(label, input) {
+            if (input.value.trim() !== "") {
+                label.style.display = "none";
+            } else {
+                label.style.display = "block";
+            }
+        }
+
+        loginForm.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            
+            if (usernameInput.value.trim() !== "" && emailInput.value.includes("@") && passwordInput.value.trim() !== "") {
+                
+                window.location.href = "login.html";
+            } else {
+
+                alert("Por favor, complete con los datos necesarios.");
+            }
+        });
+    </script>
+</body>
+</html>
